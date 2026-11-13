@@ -6,7 +6,6 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>AI Friend | Your Everyday Companion</title>
 
-    
 <style>
     * {
         box-sizing: border-box;
@@ -22,12 +21,13 @@
         min-height: 100vh;
         padding: 20px;
     }
+
     .privacy-notice {
-    text-align: center;
-    font-size: 11px;
-    color: #806779;
-    padding: 0 10px 12px;
-    background: #ffffff;
+        text-align: center;
+        font-size: 11px;
+        color: #806779;
+        padding: 0 10px 12px;
+        background: #ffffff;
     }
 
     .chat-container {
@@ -221,7 +221,7 @@
 
             <div class="header-text">
                 <h2>AI Friend</h2>
-                <p>Your everyday companion </p>
+                <p>Your everyday companion</p>
             </div>
 
             <div class="online-status">
@@ -232,7 +232,7 @@
 
         <div class="chat-messages" id="chatMessages">
             <div class="message bot-message">
-            Welcome to AI Friend! Your friendly space for conversations, ideas, and everyday thoughts.
+                Welcome to AI Friend! Your friendly space for conversations, ideas, and everyday thoughts.
             </div>
         </div>
 
@@ -240,7 +240,7 @@
             <input
                 type="text"
                 id="messageInput"
-                placeholder="Write a message... "
+                placeholder="Write a message..."
                 autocomplete="off"
                 required
             >
@@ -249,13 +249,23 @@
                 Send
             </button>
         </form>
+
         <p class="privacy-notice">
-        Messages are processed by AI. Please don't share sensitive personal information.
+            Messages are processed by AI. Please don't share sensitive personal information.
         </p>
 
     </div>
 
     <script>
+
+        // Backend API configuration
+        const API_BASE_URL =
+            window.location.protocol === "file:" ||
+            window.location.hostname === "127.0.0.1" ||
+            window.location.hostname === "localhost"
+                ? "http://127.0.0.1:8000"
+                : "YOUR_RENDER_BACKEND_URL";
+
         const chatForm = document.getElementById("chatForm");
         const messageInput = document.getElementById("messageInput");
         const chatMessages = document.getElementById("chatMessages");
@@ -298,7 +308,7 @@
 
             try {
                 const response = await fetch(
-                    "http://127.0.0.1:8000/chat",
+                    `${API_BASE_URL}/chat`,
                     {
                         method: "POST",
                         headers: {
@@ -332,6 +342,7 @@
                 messageInput.focus();
             }
         });
+
     </script>
 
 </body>
