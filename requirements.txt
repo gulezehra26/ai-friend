@@ -1,0 +1,7 @@
+fastapi
+uvicorn
+slowapi
+ollama
+google-genai
+python-dotenv
+pydantic
